@@ -55,7 +55,7 @@ function App() {
       {/* Header */}
       <header className="absolute top-0 left-0 z-50 p-6">
         <img 
-          src="/src/assets/logo.png" 
+          src="/logo.png" 
           alt="Investmoney Logo" 
           className="h-12 w-auto"
         />
