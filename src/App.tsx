@@ -134,7 +134,7 @@ function App() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold mb-3 text-gray-900">Bônus imediato</h3>
-                  <p className="text-lg leading-relaxed text-gray-600">Receba 0,5% do valor de cada tratamento fechado.</p>
+                  <p className="text-lg leading-relaxed text-gray-600">Receba 1% do valor de cada tratamento fechado.</p>
                 </div>
               </div>
             </SectionWrapper>
