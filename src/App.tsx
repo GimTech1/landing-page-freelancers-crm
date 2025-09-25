@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { DollarSign, Smartphone, Trophy, Target } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 import { useInView } from 'react-intersection-observer';
 
 interface SectionWrapperProps {
@@ -34,8 +34,33 @@ function App() {
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const fullText = 'Ganhe dinheiro indicando pacientes e clínicas';
-  const [showVideoModal, setShowVideoModal] = useState(false);
+  const swiperRef = useRef<any>(null);
+  const [swiper, setSwiper] = useState<any>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { ref: comoFuncionaRef, inView: comoFuncionaInView } = useInView({
+    threshold: 0.3,
+    triggerOnce: false
+  });
+
+  const goToPrevSlide = () => {
+    if (swiper) {
+      swiper.slidePrev();
+    }
+  };
+
+  const goToNextSlide = () => {
+    if (swiper) {
+      swiper.slideNext();
+    }
+  };
+
+  useEffect(() => {
+    if (comoFuncionaInView && videoRef.current) {
+      videoRef.current.play().catch(console.error);
+    } else if (!comoFuncionaInView && videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [comoFuncionaInView]);
 
   useEffect(() => {
     let index = 0;
@@ -91,49 +116,78 @@ function App() {
             >
               Quero ser Freelancer Investmoney
             </button>
-            <button 
-              onClick={() => setShowVideoModal(true)}
-              className="px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-blue-900 hover:bg-blue-950 text-white cursor-pointer flex items-center gap-2"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-              Ver Como Funciona
-            </button>
           </div>
           
         </div>
       </section>
 
       {/* Como Funciona */}
-      <SectionWrapper className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Como Funciona?</h2>
-          <div className="grid md:grid-cols-3 gap-12">
-            <SectionWrapper className="text-center group" delay={0.2}>
-              <div style={{background: 'var(--bg-hero-gradient)'}} className="border-2 border-gray-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                <span className="text-white text-3xl font-bold text-accent">1</span>
+      <div ref={comoFuncionaRef}>
+        <SectionWrapper className="py-20 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Como Funciona?</h2>
+            <div className="grid lg:grid-cols-2 gap-4 items-center">
+            {/* Passo a Passo - Esquerda */}
+            <div className="space-y-8">
+              <SectionWrapper className="flex items-start space-x-4" delay={0.2}>
+                <div style={{background: 'var(--bg-hero-gradient)'}} className="border-2 border-gray-200 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                  <span className="text-white text-2xl font-bold">1</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold mb-2 text-gray-900">Cadastre-se na plataforma</h3>
+                  <p className="text-lg leading-relaxed text-gray-600">Crie sua conta de forma rápida e simples.</p>
+                </div>
+              </SectionWrapper>
+              
+              <SectionWrapper className="flex items-start space-x-4" delay={0.4}>
+                <div style={{background: 'var(--bg-hero-gradient)'}} className="border-2 border-gray-200 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                  <span className="text-2xl text-white font-bold">2</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold mb-2 text-gray-900">Indique pacientes ou clínicas</h3>
+                  <p className="text-lg leading-relaxed text-gray-600">Use seus contatos para indicar interessados.</p>
+                </div>
+              </SectionWrapper>
+              
+              <SectionWrapper className="flex items-start space-x-4" delay={0.6}>
+                <div style={{background: 'var(--bg-hero-gradient)'}} className="border-2 border-gray-200 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                  <span className="text-2xl text-white font-bold">3</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold mb-2 text-gray-900">Receba bônus de fechamento em PIX</h3>
+                  <p className="text-lg leading-relaxed text-gray-600">Ganhe por cada tratamento fechado.</p>
+                </div>
+              </SectionWrapper>
+            </div>
+            
+            {/* Vídeo Tutorial - Direita */}
+            <SectionWrapper className="flex justify-center items-center" delay={0.8}>
+              <div className="w-full max-w-[60%]">
+                   <video 
+                     ref={videoRef}
+                     controls 
+                     className="w-full rounded-lg shadow-lg bg-black"
+                     preload="metadata"
+                     loop
+                   >
+                  <source src="/IMG_6763.MOV" type="video/quicktime" />
+                  <source src="/IMG_6763.MOV" type="video/mp4" />
+                  Seu navegador não suporta o elemento de vídeo.
+                </video>
+                <div className="text-center mt-4">
+                  <button 
+                    onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
+                    className="px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-blue-900 hover:bg-blue-950 text-white cursor-pointer"
+                  >
+                    Começar Agora
+                  </button>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Cadastre-se na plataforma</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Crie sua conta de forma rápida e simples.</p>
-            </SectionWrapper>
-            <SectionWrapper className="text-center group" delay={0.4}>
-              <div style={{background: 'var(--bg-hero-gradient)'}} className="border-2 border-gray-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                <span className="text-3xl text-white font-bold text-accent">2</span>
-              </div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Indique pacientes ou clínicas</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Use seus contatos para indicar interessados.</p>
-            </SectionWrapper>
-            <SectionWrapper className="text-center group" delay={0.6}>
-              <div style={{background: 'var(--bg-hero-gradient)'}} className="border-2 border-gray-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                <span className="text-3xl text-white font-bold text-accent">3</span>
-              </div>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Receba bônus de fechamento em PIX</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Ganhe por cada tratamento fechado.</p>
             </SectionWrapper>
           </div>
         </div>
       </SectionWrapper>
+      </div>
 
       {/* Benefícios */}
       <SectionWrapper className="py-20 px-4 bg-gray-50">
@@ -194,23 +248,44 @@ function App() {
           <h2 className="text-4xl font-bold mb-16 text-gray-900">O que dizem nossos freelancers</h2>
           <div className="max-w-4xl mx-auto">
             <Swiper
-              modules={[Pagination, Navigation]}
+              ref={swiperRef}
+              modules={[Pagination]}
               spaceBetween={30}
               slidesPerView={1}
-              navigation={true}
               pagination={{
                 clickable: true,
                 dynamicBullets: true,
               }}
               loop={true}
               className="pb-12"
+              onSwiper={setSwiper}
             >
               <SwiperSlide>
                 <div className="bg-gray-50 p-10 rounded-2xl border border-gray-200">
                   <blockquote className="text-2xl italic mb-6 leading-relaxed text-gray-700">
                     "Indiquei 3 pacientes e já recebi meu bônus de fechamento no mesmo mês!"
                   </blockquote>
-                  <cite className="text-lg font-medium text-gray-500">- Bruno Sandoval, Freelancer Investmoney</cite>
+                  <div className="flex items-center justify-center gap-4">
+                    <button 
+                      onClick={goToPrevSlide}
+                      className="p-2 rounded-full bg-white border border-gray-300 hover:bg-gray-50 transition-colors"
+                    >
+                      <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <cite className="text-lg font-medium text-gray-500">Bruno Sandoval, Freelancer Investmoney</cite>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={goToNextSlide}
+                        className="p-2 rounded-full bg-white border border-gray-300 hover:bg-gray-50 transition-colors"
+                      >
+                        <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
@@ -218,7 +293,27 @@ function App() {
                   <blockquote className="text-2xl italic mb-6 leading-relaxed text-gray-700">
                     "A plataforma é incrível! Consegui indicar 5 clínicas em apenas uma semana e o pagamento foi super rápido via PIX."
                   </blockquote>
-                  <cite className="text-lg font-medium text-gray-500">- Gastão Santos, Freelancer Investmoney</cite>
+                  <div className="flex items-center justify-center gap-4">
+                      <button 
+                        onClick={() => swiperRef.current?.swiper?.slidePrev()}
+                        className="p-2 rounded-full bg-white border border-gray-300 hover:bg-gray-50 transition-colors"
+                      >
+                        <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                    <cite className="text-lg font-medium text-gray-500">Gastão Santos, Freelancer Investmoney</cite>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={goToNextSlide}
+                        className="p-2 rounded-full bg-white border border-gray-300 hover:bg-gray-50 transition-colors"
+                      >
+                        <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
@@ -226,7 +321,27 @@ function App() {
                   <blockquote className="text-2xl italic mb-6 leading-relaxed text-gray-700">
                     "Trabalho de casa, no meu horário, sem pressão. É perfeito para quem quer renda extra sem complicações."
                   </blockquote>
-                  <cite className="text-lg font-medium text-gray-500">- Jorge Jordão, Freelancer Investmoney</cite>
+                  <div className="flex items-center justify-center gap-4">
+                      <button 
+                        onClick={() => swiperRef.current?.swiper?.slidePrev()}
+                        className="p-2 rounded-full bg-white border border-gray-300 hover:bg-gray-50 transition-colors"
+                      >
+                        <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                    <cite className="text-lg font-medium text-gray-500"> Jorge Jordão, Freelancer Investmoney</cite>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={goToNextSlide}
+                        className="p-2 rounded-full bg-white border border-gray-300 hover:bg-gray-50 transition-colors"
+                      >
+                        <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </SwiperSlide>
             </Swiper>
@@ -272,15 +387,6 @@ function App() {
               >
                 Quero ser Freelancer Investmoney
               </button>
-              <button 
-                onClick={() => setShowVideoModal(true)}
-                className="px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-blue-900 hover:bg-blue-950 text-white cursor-pointer flex items-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-                Ver Como Funciona
-              </button>
             </div>
             
           </SectionWrapper>
@@ -308,57 +414,6 @@ function App() {
         </div>
       </section>
 
-      {/* Modal de Vídeo */}
-      {showVideoModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
-            <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-900">Como Funciona</h3>
-              <button 
-                onClick={() => {
-                  setShowVideoModal(false);
-                  if (videoRef.current) {
-                    videoRef.current.pause();
-                  }
-                }}
-                className="text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-full hover:bg-gray-100 cursor-pointer"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            
-            <div className="p-6 pb-8">
-              <div className="mb-8 flex justify-center">
-                <video 
-                  ref={videoRef}
-                  controls 
-                  className="w-full max-w-[70%] lg:max-w-[28%] rounded-lg shadow-lg"
-                  poster="/logo.png"
-                  autoPlay
-                >
-                  <source src="/IMG_6763.MOV" type="video/quicktime" />
-                  <source src="/IMG_6763.MOV" type="video/mp4" />
-                  Seu navegador não suporta o elemento de vídeo.
-                </video>
-              </div>
-              
-              <div className="text-center pb-4">
-                <button 
-                  onClick={() => {
-                    window.open('https://crm.investmoneysa.com.br/cadastro', '_blank');
-                    setShowVideoModal(false);
-                  }}
-                  className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-blue-900 hover:bg-blue-950 text-white cursor-pointer"
-                >
-                  Começar Agora
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
