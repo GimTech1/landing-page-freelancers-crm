@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { DollarSign, Smartphone, Trophy, Target } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
@@ -34,6 +34,8 @@ function App() {
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const fullText = 'Ganhe dinheiro indicando pacientes e clínicas';
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     let index = 0;
@@ -82,13 +84,24 @@ function App() {
           <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto leading-relaxed text-gray-300 animate-fade-in" style={{animationDelay: '3s', animationFillMode: 'both'}}>
             Trabalhe de onde quiser, sem horário fixo, e receba bônus por cada tratamento fechado.
           </p>
-          <button 
-            onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
-            className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black animate-fade-in cursor-pointer" 
-            style={{animationDelay: '4s', animationFillMode: 'both'}}
-          >
-            Quero ser Freelancer Investmoney
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center animate-fade-in" style={{animationDelay: '4s', animationFillMode: 'both'}}>
+            <button 
+              onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
+              className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black cursor-pointer"
+            >
+              Quero ser Freelancer Investmoney
+            </button>
+            <button 
+              onClick={() => setShowVideoModal(true)}
+              className="px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-blue-900 hover:bg-blue-950 text-white cursor-pointer flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Ver Como Funciona
+            </button>
+          </div>
+          
         </div>
       </section>
 
@@ -252,12 +265,24 @@ function App() {
             <p className="text-xl mb-10 max-w-4xl mx-auto leading-relaxed text-gray-300">
               Trabalhe de onde quiser, sem horário fixo, e receba bônus por cada tratamento fechado.
             </p>
-            <button 
-              onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
-              className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black cursor-pointer"
-            >
-              Quero ser Freelancer Investmoney
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+              <button 
+                onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
+                className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black cursor-pointer"
+              >
+                Quero ser Freelancer Investmoney
+              </button>
+              <button 
+                onClick={() => setShowVideoModal(true)}
+                className="px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-blue-900 hover:bg-blue-950 text-white cursor-pointer flex items-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                Ver Como Funciona
+              </button>
+            </div>
+            
           </SectionWrapper>
           
           {/* Contato */}
@@ -282,6 +307,58 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Modal de Vídeo */}
+      {showVideoModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h3 className="text-xl font-semibold text-gray-900">Como Funciona</h3>
+              <button 
+                onClick={() => {
+                  setShowVideoModal(false);
+                  if (videoRef.current) {
+                    videoRef.current.pause();
+                  }
+                }}
+                className="text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-full hover:bg-gray-100 cursor-pointer"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="p-6 pb-8">
+              <div className="mb-8 flex justify-center">
+                <video 
+                  ref={videoRef}
+                  controls 
+                  className="w-full max-w-[70%] lg:max-w-[28%] rounded-lg shadow-lg"
+                  poster="/logo.png"
+                  autoPlay
+                >
+                  <source src="/IMG_6763.MOV" type="video/quicktime" />
+                  <source src="/IMG_6763.MOV" type="video/mp4" />
+                  Seu navegador não suporta o elemento de vídeo.
+                </video>
+              </div>
+              
+              <div className="text-center pb-4">
+                <button 
+                  onClick={() => {
+                    window.open('https://crm.investmoneysa.com.br/cadastro', '_blank');
+                    setShowVideoModal(false);
+                  }}
+                  className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-blue-900 hover:bg-blue-950 text-white cursor-pointer"
+                >
+                  Começar Agora
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
