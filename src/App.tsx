@@ -83,8 +83,8 @@ function App() {
       <header className="absolute top-0 left-0 z-50 p-6">
         <img 
           src="/logo.png" 
-          alt="Investmoney Logo" 
-          className="h-12 w-auto"
+          alt="IM Solumn Logo" 
+          className="h-18 w-auto"
         />
       </header>
 
@@ -114,7 +114,7 @@ function App() {
               onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
               className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black cursor-pointer"
             >
-              Quero ser Freelancer Investmoney
+              Quero ser Freelancer Solumn
             </button>
           </div>
           
@@ -274,7 +274,7 @@ function App() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
-                    <cite className="text-lg font-medium text-gray-500">Bruno Sandoval, Freelancer Investmoney</cite>
+                    <cite className="text-lg font-medium text-gray-500">Bruno Sandoval, Freelancer Solumn</cite>
                     <div className="flex gap-2">
                       <button 
                         onClick={goToNextSlide}
@@ -302,7 +302,7 @@ function App() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
-                    <cite className="text-lg font-medium text-gray-500">Gastão Santos, Freelancer Investmoney</cite>
+                    <cite className="text-lg font-medium text-gray-500">Gastão Santos, Freelancer Solumn</cite>
                     <div className="flex gap-2">
                       <button 
                         onClick={goToNextSlide}
@@ -330,7 +330,7 @@ function App() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
-                    <cite className="text-lg font-medium text-gray-500"> Jorge Jordão, Freelancer Investmoney</cite>
+                    <cite className="text-lg font-medium text-gray-500"> Jorge Jordão, Freelancer Solumn</cite>
                     <div className="flex gap-2">
                       <button 
                         onClick={goToNextSlide}
@@ -385,7 +385,7 @@ function App() {
                 onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
                 className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black cursor-pointer"
               >
-                Quero ser Freelancer Investmoney
+                Quero ser Freelancer Solumn
               </button>
             </div>
             
@@ -399,7 +399,7 @@ function App() {
                 Mande mensagem para:
               </p>
               <a 
-                href="https://wa.me/5541999647120?text=Olá! Gostaria de saber mais sobre o programa de freelancers da Investmoney."
+                href="https://wa.me/5541999647120?text=Olá! Gostaria de saber mais sobre o programa de freelancers da Solumn."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-semibold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
