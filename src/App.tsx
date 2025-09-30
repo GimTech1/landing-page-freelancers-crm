@@ -111,7 +111,7 @@ function App() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center animate-fade-in" style={{animationDelay: '4s', animationFillMode: 'both'}}>
             <button 
-              onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
+              onClick={() => window.open('https://solumn.com.br/cadastro', '_blank')}
               className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black cursor-pointer"
             >
               Quero ser Freelancer Solumn
@@ -176,7 +176,7 @@ function App() {
                 </video>
                 <div className="text-center mt-4">
                   <button 
-                    onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
+                    onClick={() => window.open('https://solumn.com.br/cadastro', '_blank')}
                     className="px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-blue-900 hover:bg-blue-950 text-white cursor-pointer"
                   >
                     Começar Agora
@@ -382,7 +382,7 @@ function App() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <button 
-                onClick={() => window.open('https://crm.investmoneysa.com.br/cadastro', '_blank')}
+                onClick={() => window.open('https://solumn.com.br/cadastro', '_blank')}
                 className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black cursor-pointer"
               >
                 Quero ser Freelancer Solumn
@@ -399,7 +399,7 @@ function App() {
                 Mande mensagem para:
               </p>
               <a 
-                href="https://wa.me/5541999647120?text=Olá! Gostaria de saber mais sobre o programa de freelancers da Solumn."
+                href="https://wa.me/5541999647120?text=Olá! Gostaria de saber mais sobre o programa de freelancers do Solumn."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-semibold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
