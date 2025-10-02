@@ -165,7 +165,7 @@ function App() {
       {/* Selos de Garantia */}
       <SectionWrapper className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-center justify-center gap-3 bg-white p-4 rounded-lg shadow-sm">
               <Shield className="w-8 h-8 text-gray-900 flex-shrink-0" />
               <div className="text-left">
@@ -180,11 +180,22 @@ function App() {
                 <div className="text-sm text-gray-600">LGPD e segurança total</div>
               </div>
             </div>
-              <div className="flex items-center justify-center gap-3 bg-white p-4 rounded-lg shadow-sm">
+            <div className="flex items-center justify-center gap-3 bg-white p-4 rounded-lg shadow-sm">
               <FileText className="w-8 h-8 text-gray-900 flex-shrink-0" />
               <div className="text-left">
                 <div className="font-semibold text-gray-900">Produto da Investmoney</div>
                 <div className="text-sm text-gray-600">Desde 2015 no mercado</div>
+              </div>
+            </div>
+            <div className="flex items-center justify-center bg-white p-4 rounded-lg shadow-sm">
+              <img 
+                src="/selo-solo.png" 
+                alt="Great Place to Work Certificada" 
+                className="h-16 w-auto"
+              />
+              <div className="text-left ml-2">
+                <div className="font-semibold text-gray-900">Great Place to Work</div>
+                <div className="text-sm text-gray-600">Fev/2025 - Fev/2026</div>
               </div>
             </div>
           </div>
