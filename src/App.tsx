@@ -577,7 +577,7 @@ function App() {
             </SectionWrapper>
             <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.6}>
               <h3 className="text-2xl font-semibold mb-4 text-gray-900">Quanto posso ganhar?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Não há limite! Você recebe R$ 10,00 a cada R$ 1.000,00 do valor do tratamento do paciente indicado e R$ 200,00 por clínica. Quanto mais indicações, mais você ganha.</p>
+              <p className="text-lg leading-relaxed text-gray-600">Não há limite! Você recebe R$ 10,00 a cada R$ 1.000,00 do valor do tratamento do paciente indicado, e R$ 100,00 por clínica. Quanto mais indicações, mais você ganha.</p>
             </SectionWrapper>
             <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.7}>
               <h3 className="text-2xl font-semibold mb-4 text-gray-900">Quando recebo o pagamento?</h3>
