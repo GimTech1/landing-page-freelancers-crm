@@ -417,7 +417,7 @@ function App() {
               <img 
                 src="/mapa.jpg" 
                 alt="Mapa do Brasil mostrando distribuição de clínicas parceiras por região" 
-                className="h-[28rem] rounded-xl mb-4 transform scale-110"
+                className="lg:h-[28rem] rounded-xl mb-4 transform scale-110"
               />
             </div>
           </div>
