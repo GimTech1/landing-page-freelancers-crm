@@ -141,7 +141,7 @@ function App() {
               <div className="flex justify-center mb-3">
                 <Users className="w-10 h-10 text-gray-900" />
               </div>
-              <div className="text-4xl font-bold text-gray-900 mb-2">50+</div>
+              <div className="text-4xl font-bold text-gray-900 mb-2">100+</div>
               <div className="text-lg text-gray-600">Freelancers Ativos</div>
             </div>
             <div>
@@ -357,7 +357,7 @@ function App() {
                     </button>
                     <div className="flex flex-col items-center">
                       <cite className="text-lg font-medium text-gray-500 flex items-center gap-2">
-                        Bruno Sandoval, Freelancer Solumn
+                        Thais Santos, Freelancer Solumn
                       </cite>
                       <span className="text-sm text-gray-400">Curitiba, PR</span>
                     </div>
@@ -390,7 +390,7 @@ function App() {
                       </button>
                     <div className="flex flex-col items-center">
                       <cite className="text-lg font-medium text-gray-500 flex items-center gap-2">
-                        Gastão Santos, Freelancer Solumn
+                        Jéssica Araújo, Freelancer Solumn
                       </cite>
                       <span className="text-sm text-gray-400">Curitiba, PR</span>
                     </div>
@@ -423,7 +423,7 @@ function App() {
                       </button>
                     <div className="flex flex-col items-center">
                       <cite className="text-lg font-medium text-gray-500 flex items-center gap-2">
-                        Jorge Jordão, Freelancer Solumn
+                        Felipe Oliveira, Freelancer Solumn
                       </cite>
                       <span className="text-sm text-gray-400">Curitiba, PR</span>
                     </div>
