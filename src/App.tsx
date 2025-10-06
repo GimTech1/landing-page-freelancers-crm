@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { DollarSign, Smartphone, Trophy, Target, Shield, Users, CheckCircle, Building2, Lock, FileText, Clock } from 'lucide-react';
+import { DollarSign, Smartphone, Trophy, Target, Shield, Users, CheckCircle, Building2, Lock, FileText, Clock,  } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import { useInView } from 'react-intersection-observer';
@@ -37,6 +37,7 @@ function App() {
   const swiperRef = useRef<any>(null);
   const [swiper, setSwiper] = useState<any>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [faqAberto, setFaqAberto] = useState<number | null>(null);
 
   const goToPrevSlide = () => {
     if (swiper) {
@@ -49,6 +50,77 @@ function App() {
       swiper.slideNext();
     }
   };
+
+  const toggleFaq = (index: number) => {
+    setFaqAberto(faqAberto === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      pergunta: "Preciso pagar algo pra participar?",
+      resposta: "Não! Ser Freelancer é de graça. Você só ganha — nunca paga nada pra entrar."
+    },
+    {
+      pergunta: "Quanto ganho por indicar uma clínica?",
+      resposta: "Cada clínica de estética ou odontologia que se cadastra com seus dados te dá R$ 100. Simples assim: indicou, ela confirmou com nosso time de vendas, você ganhou."
+    },
+    {
+      pergunta: "E quanto ganho por indicar um paciente?",
+      resposta: "Cada paciente que faz um tratamento pela IM gera 1% do valor do procedimento pra você. Se ele fizer um tratamento de R$ 5.000, por exemplo, você ganha R$ 50."
+    },
+    {
+      pergunta: "Tem limite de indicações ou ganhos?",
+      resposta: "Não tem limite! Você pode indicar quantas clínicas e pacientes quiser — quanto mais indicar, mais você ganha."
+    },
+    {
+      pergunta: "Como faço para indicar?",
+      resposta: "É muito fácil! Na página 'Indicações' você encontra seus links personalizados e materiais prontos. Você pode compartilhar esses links nas suas redes sociais, todos que se cadastrarem pelo seu link serão automaticamente atribuídos a você."
+    },
+    {
+      pergunta: "Como acompanho meus ganhos e status?",
+      resposta: "Tudo acontece dentro da plataforma Solumn. Lá você encontra seus ganhos, o status de cada clínica ou paciente indicado e o histórico completo das suas comissões. Basta acessar seu painel como freelancer, entrar nas áreas 'clínicas/pacientes' e acompanhar tudo em tempo real."
+    },
+    {
+      pergunta: "Posso indicar clínicas de qualquer cidade?",
+      resposta: "Pode sim! Não tem limite — quanto mais clínicas você indicar, melhor. Elas podem ser de qualquer cidade do Brasil, desde que façam atendimentos de estética ou odontologia."
+    },
+    {
+      pergunta: "Com quem falo se tiver dúvidas?",
+      resposta: "Clique no botão no canto inferior direito para entrar em contato com a nossa equipe, ou acesse o suporte após se cadastrar."
+    },
+    {
+      pergunta: "Existe algum grupo ou canal oficial de freelancers?",
+      resposta: "Sim! Participe da comunidade dos consultores para receber novidades, campanhas e tirar dúvidas com outros freelancers."
+    },
+    {
+      pergunta: "Posso atualizar meus dados depois do cadastro?",
+      resposta: "Sim. Dentro da plataforma Solumn, vá em 'Meu Perfil' e atualize suas informações sempre que precisar — como telefone, e-mail ou chave PIX."
+    },
+    {
+      pergunta: "O que é a Investmoney e o que ela faz?",
+      resposta: "A Investmoney é uma empresa que ajuda clínicas a receberem à vista o que os pacientes pagam parcelado. Ela antecipa o dinheiro pra clínica e depois recebe os boletos aos poucos. Assim, a clínica tem dinheiro agora e o paciente pode pagar tranquilo."
+    },
+    {
+      pergunta: "O que significa ser um Freelancer Investmoney?",
+      resposta: "É fazer parte da rede que indica clínicas e pacientes pra esse sistema. Você ajuda a conectar quem precisa parcelar com quem oferece o tratamento — e ganha por cada indicação que dá certo."
+    },
+    {
+      pergunta: "Como funciona o sistema de parcelamento no boleto?",
+      resposta: "O paciente escolhe pagar em boletos, a clínica faz o tratamento e recebe tudo antes. Depois, a Investmoney cuida de receber os boletos mês a mês. É simples, sem cartão e sem taxas altas."
+    },
+    {
+      pergunta: "É seguro participar?",
+      resposta: "Sim! A Investmoney é uma empresa real, com contratos e processos 100% digitais e rastreáveis. Todo pagamento e comissão acontece de forma segura e registrada."
+    },
+    {
+      pergunta: "Meus dados e indicações ficam protegidos?",
+      resposta: "Sim. Seus dados são usados só pra validar e pagar suas indicações. Tudo segue as regras da LGPD, a lei que protege informações pessoais no Brasil."
+    },
+    {
+      pergunta: "A Investmoney é uma empresa registrada?",
+      resposta: "Sim. A Investmoney Securitizadora S.A. é uma empresa registrada com CNPJ e sede oficial no Brasil, e atua dentro das normas do mercado financeiro."
+    }
+  ];
 
   useEffect(() => {
     let index = 0;
@@ -105,12 +177,11 @@ function App() {
 
           {/* Seta para baixo - Descubra Mais */}
           <div 
-            onClick={() => document.querySelector('#como-funciona')?.scrollIntoView({ behavior: 'smooth' })}
-            className="lg:mt-12 mt-6 cursor-pointer animate-fade-in" 
+            className="lg:mt-12 mt-6 animate-fade-in" 
             style={{animationDelay: '3s', animationFillMode: 'both'}}
           >
             <div className="flex flex-col items-center gap-2 group">
-              <span className="text-sm text-gray-300 group-hover:text-white transition-colors">Descubra mais</span>
+              <span className="text-sm text-gray-300 transition-colors">Descubra mais</span>
               <svg 
                 className="w-6 h-6 text-white animate-bounce" 
                 fill="none" 
@@ -210,6 +281,8 @@ function App() {
             <div className="grid lg:grid-cols-2 gap-4 items-center">
             {/* Passo a Passo - Esquerda */}
             <div className="space-y-8">
+              <p className="text-lg leading-relaxed text-gray-600">A clínica faz um tratamento e o paciente paga em várias parcelas. A Investmoney, empresa desenvolvedora da Solumn, adianta esse dinheiro pra clínica — e depois recebe os boletos aos poucos. Isso ajuda clínicas a terem dinheiro agora e pacientes a fazerem o tratamento sem precisar de cartão de crédito e sem taxas abusivas.</p>
+              <p className="text-lg leading-relaxed text-gray-600">Você faz parte indicando clínicas que querem receber à vista e pacientes que precisam parcelar com facilidade.</p>
               <SectionWrapper className="flex items-start space-x-4" delay={0.2}>
                 <div style={{background: 'var(--bg-hero-gradient)'}} className="border-2 border-gray-200 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300">
                   <span className="text-white text-2xl font-bold">1</span>
@@ -319,6 +392,80 @@ function App() {
                 </div>
               </div>
             </SectionWrapper>
+          </div>
+        </div>
+      </SectionWrapper>
+
+       {/* Sobre o Solumn */}
+       <SectionWrapper className="py-20 p-8 bg-white">
+        <div id="sobre" className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Por que o Solumn é Confiável?</h2>
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            {/* Sobre o Solumn */}
+            <div className="p-6">
+              <h3 className="text-2xl font-semibold mb-6 text-gray-900">Sobre o Solumn</h3>
+              <p className="text-base leading-relaxed text-gray-600 mb-4">
+                Solumn é uma plataforma desenvolvida pela <strong>Investmoney</strong>, empresa brasileira líder em securitização de crédito desde 2015, especializada em conectar pacientes a clínicas odontológicas e de estética de qualidade.
+              </p>
+              <p className="text-base leading-relaxed text-gray-600">
+                A Investmoney possui mais de 2.500 clínicas parceiras em todo Brasil. Através do Solumn, facilitamos o acesso a tratamentos por meio de uma rede de freelancers capacitados que conectam pacientes às clínicas ideais.
+              </p>
+            </div>
+
+            {/* Mapa de Clínicas */}
+            <div className="flex flex-col items-center">
+              <img 
+                src="/mapa.jpg" 
+                alt="Mapa do Brasil mostrando distribuição de clínicas parceiras por região" 
+                className="h-[28rem] rounded-xl mb-4 transform scale-110"
+              />
+            </div>
+          </div>
+          
+          {/* CTA Button */}
+          <div className="text-center mt-12">
+            <button 
+              onClick={() => window.open('https://solumn.com.br/cadastro', '_blank')}
+              className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-gray-900 hover:bg-gray-950 text-white cursor-pointer"
+            >
+              Cadastre-se Agora e Comece a Ganhar
+            </button>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Garantias */}
+      <SectionWrapper className="py-16 p-8">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-12 text-gray-900">Nossas Garantias para Você</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="flex justify-center mb-4">
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <Shield className="w-8 h-8 text-gray-900" />
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Sem Custos</h3>
+              <p className="text-gray-600">Cadastro e uso gratuitos, para sempre</p>
+            </div>
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="flex justify-center mb-4">
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <FileText className="w-8 h-8 text-gray-900" />
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Plataforma 100% Legal</h3>
+              <p className="text-gray-600">Termos de uso claros e conformidade total com a legislação</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="flex justify-center mb-4">
+                <div className="bg-gray-100 p-4 rounded-full">
+                  <Clock className="w-8 h-8 text-gray-900" />
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Liberdade Total</h3>
+              <p className="text-gray-600">Cancele quando quiser, sem multas ou penalidades</p>
+            </div>
           </div>
         </div>
       </SectionWrapper>
@@ -445,156 +592,55 @@ function App() {
         </div>
       </SectionWrapper>
 
-      {/* Sobre o Solumn */}
-      <SectionWrapper className="py-20 p-8 bg-white">
-        <div id="sobre" className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Por que o Solumn é Confiável?</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">Sobre o Solumn</h3>
-              <p className="text-lg leading-relaxed text-gray-600 mb-6">
-                Solumn é uma plataforma desenvolvida pela <strong>Investmoney</strong>, empresa brasileira líder em securitização de crédito desde 2015, especializada em conectar pacientes a clínicas odontológicas e de estética de qualidade.
-              </p>
-              <p className="text-lg leading-relaxed text-gray-600 mb-6">
-                A Investmoney possui mais de 2.500 clínicas parceiras em todo Brasil. Através do Solumn, facilitamos o acesso a tratamentos por meio de uma rede de freelancers capacitados que conectam pacientes às clínicas ideais.
-              </p>
-            </div>
-            <div className="bg-gradient-to-br from-gray-50 to-indigo-50 p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">Como Todos Ganham?</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Você indica</h4>
-                    <p className="text-gray-600">Freelancers conectam pacientes e clínicas</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Paciente fecha tratamento</h4>
-                    <p className="text-gray-600">Paciente encontra a clínica ideal</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">
-                    3
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Clínica ganha cliente</h4>
-                    <p className="text-gray-600">Clínica recebe novo paciente qualificado</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 font-bold">
-                    ✓
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Você recebe comissão</h4>
-                    <p className="text-gray-600">Pagamento via PIX após fechamento</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* CTA Button */}
-          <div className="text-center mt-12">
-            <button 
-              onClick={() => window.open('https://solumn.com.br/cadastro', '_blank')}
-              className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-gray-900 hover:bg-gray-950 text-white cursor-pointer"
-            >
-              Cadastre-se Agora e Comece a Ganhar
-            </button>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* Garantias */}
-      <SectionWrapper className="py-16 p-8">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-12 text-gray-900">Nossas Garantias para Você</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="flex justify-center mb-4">
-                <div className="bg-gray-100 p-4 rounded-full">
-                  <Shield className="w-8 h-8 text-gray-900" />
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Sem Custos</h3>
-              <p className="text-gray-600">Cadastro e uso gratuitos, para sempre</p>
-            </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="flex justify-center mb-4">
-                <div className="bg-gray-100 p-4 rounded-full">
-                  <FileText className="w-8 h-8 text-gray-900" />
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Plataforma 100% Legal</h3>
-              <p className="text-gray-600">Termos de uso claros e conformidade total com a legislação</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="flex justify-center mb-4">
-                <div className="bg-gray-100 p-4 rounded-full">
-                  <Clock className="w-8 h-8 text-gray-900" />
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Liberdade Total</h3>
-              <p className="text-gray-600">Cancele quando quiser, sem multas ou penalidades</p>
-            </div>
-          </div>
-        </div>
-      </SectionWrapper>
-
       {/* FAQ */}
       <SectionWrapper className="py-20 p-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Perguntas Frequentes</h2>
-          <div className="max-w-4xl mx-auto space-y-6">
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.1}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">É preciso pagar algo para se cadastrar?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Não! O cadastro é 100% gratuito e você nunca pagará nada para participar. Nós é que pagamos você pelas indicações.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.2}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Como sei que vou receber meu pagamento?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Todos os pagamentos seguem nossos termos de uso transparentes. Você acompanha suas indicações em tempo real pela plataforma e recebe notificação assim que o pagamento é processado, com total rastreabilidade.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.3}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">O Solumn é uma plataforma legalizada?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Sim! O Solumn é desenvolvido pela Investmoney SA, empresa devidamente registrada e atuando desde 2015, em conformidade com toda legislação brasileira e LGPD. Somos certificados Great Place to Work.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.4}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Meus dados estão seguros?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Absolutamente. Seguimos rigorosamente a LGPD (Lei Geral de Proteção de Dados) e utilizamos criptografia de ponta para proteger todas as suas informações pessoais.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.5}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Preciso ter experiência na área?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Não, basta ter contatos e disposição. Disponibilizamos materiais de apoio, scripts prontos e dicas para facilitar o seu trabalho desde o primeiro dia.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.6}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Quanto posso ganhar?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Não há limite! Você recebe um percentual do valor do tratamento do paciente indicado, e R$ 100,00 por clínica. Quanto mais indicações, mais você ganha.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.7}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Quando recebo o pagamento?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">O pagamento é feito via PIX na primeira liquidação após a confirmação do fechamento do tratamento ou cadastro da clínica.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.8}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">É um trabalho com vínculo com a empresa?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Não. Você trabalha como freelancer autônomo, sem vínculo empregatício. A relação é regida por nossos termos de uso, que garantem total transparência nos pagamentos. Isso significa liberdade total de horários e sem obrigações trabalhistas.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={0.9}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Tenho garantias e proteções?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Sim! Ao se cadastrar, você aceita nossos termos de uso que estabelecem direitos e deveres de forma transparente, garantindo seus pagamentos e proteções de acordo com a legislação brasileira.</p>
-            </SectionWrapper>
-            <SectionWrapper className="bg-white p-8 rounded-xl shadow-sm border border-gray-200" delay={1.0}>
-              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Posso cancelar quando quiser?</h3>
-              <p className="text-lg leading-relaxed text-gray-600">Sim! Você tem total liberdade para parar quando quiser, sem multas ou penalidades. Você mantém direito aos pagamentos das indicações já realizadas.</p>
-            </SectionWrapper>
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 flex items-center justify-center gap-3">
+            Perguntas Frequentes
+          </h2>
+          <div className="max-w-4xl mx-auto flex flex-col gap-4">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index} 
+                className={`bg-white border rounded-xl overflow-hidden transition-all duration-300 ${
+                  faqAberto === index 
+                    ? 'border-gray-900 shadow-lg' 
+                    : 'border-gray-200 shadow-sm hover:border-gray-400 hover:shadow-md'
+                }`}
+              >
+                <button 
+                  className={`w-full p-6 text-left flex justify-between items-center gap-4 transition-all duration-300 ${
+                    faqAberto === index 
+                      ? 'bg-gray-50' 
+                      : 'bg-transparent hover:bg-gray-50'
+                  }`}
+                  onClick={() => toggleFaq(index)}
+                >
+                  <span className="text-lg md:text-xl font-semibold text-gray-900">{faq.pergunta}</span>
+                  <svg 
+                    className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 ${
+                      faqAberto === index ? 'rotate-180 text-gray-900' : 'text-gray-600'
+                    }`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <polyline points="6 9 12 15 18 9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></polyline>
+                  </svg>
+                </button>
+                <div 
+                  className={`transition-all duration-300 ease-in-out ${
+                    faqAberto === index 
+                      ? 'max-h-96 opacity-100' 
+                      : 'max-h-0 opacity-0'
+                  } overflow-hidden`}
+                >
+                  <div className="px-6 pb-6">
+                    <p className="text-base md:text-lg leading-relaxed text-gray-600">{faq.resposta}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </SectionWrapper>
