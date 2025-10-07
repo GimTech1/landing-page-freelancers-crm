@@ -176,10 +176,10 @@ function App() {
               Quero ser Freelancer Solumn
             </button>
             <button 
-              onClick={() => document.querySelector('#como-funciona')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => window.open('https://solumn.com.br/login', '_blank')}
               className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 cursor-pointer"
             >
-              Saiba Mais
+              Já possuo uma conta
             </button>
           </div>
 
@@ -670,6 +670,12 @@ function App() {
               >
                 Quero ser Freelancer Solumn
               </button>
+              <button 
+              onClick={() => window.open('https://solumn.com.br/login', '_blank')}
+              className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 cursor-pointer"
+            >
+              Já possuo uma conta
+            </button>
             </div>
             
           </SectionWrapper>
