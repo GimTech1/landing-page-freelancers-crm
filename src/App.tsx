@@ -140,12 +140,20 @@ function App() {
   return (
     <div className="w-full min-h-screen">
       {/* Header */}
-      <header className="absolute top-0 left-0 z-50 p-4 lg:pl-12 pt-4">
-        <img 
-          src="/logo.png" 
-          alt="IM Solumn Logo" 
-          className="h-18 w-auto"
-        />
+      <header className="absolute top-0 left-0 right-0 z-50 p-4 lg:px-12 pt-4">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
+          <img 
+            src="/logo.png" 
+            alt="IM Solumn Logo" 
+            className="h-18 w-auto"
+          />
+          <button
+            onClick={() => window.open('https://solumn.com.br/login', '_blank')}
+            className="px-6 py-2 rounded-lg font-semibold text-base transition-all duration-300 bg-white text-gray-900 hover:bg-gray-100 shadow-md hover:shadow-lg cursor-pointer"
+          >
+            Acessar
+          </button>
+        </div>
       </header>
 
       {/* Hero Section */}
