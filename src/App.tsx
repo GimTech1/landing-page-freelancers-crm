@@ -168,21 +168,6 @@ function App() {
           <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto leading-relaxed text-gray-300 animate-fade-in" style={{animationDelay: '1s', animationFillMode: 'both'}}>
             Trabalhe de onde quiser, sem horário fixo, e receba bônus por cada fechamento de paciente ou clínica.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center animate-fade-in" style={{animationDelay: '2s', animationFillMode: 'both'}}>
-            <button 
-              onClick={() => window.open('https://solumn.com.br/cadastro', '_blank')}
-              className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-white text-black cursor-pointer"
-            >
-              Quero ser Freelancer Solumn
-            </button>
-            <button 
-              onClick={() => window.open('https://solumn.com.br/login', '_blank')}
-              className="px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 cursor-pointer"
-            >
-              Já possuo uma conta
-            </button>
-          </div>
-
           {/* Seta para baixo - Descubra Mais */}
           <div 
             className="lg:mt-12 mt-6 animate-fade-in" 
