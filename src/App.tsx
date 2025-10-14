@@ -62,7 +62,7 @@ function App() {
     },
     {
       pergunta: "Quanto ganho por indicar uma clínica?",
-      resposta: "Cada clínica de estética ou odontologia que se cadastra com seus dados te dá R$ 100. Simples assim: indicou, ela confirmou com nosso time de vendas, você ganhou."
+      resposta: "Cada clínica de estética ou odontológica que se cadastra e vira nossa parceira por meio de sua indicação, você ganha R$ 100,00. Simples assim: indicou, ela confirmou com nosso time de vendas, você ganhou."
     },
     {
       pergunta: "E quanto ganho por indicar um paciente?",
@@ -97,28 +97,28 @@ function App() {
       resposta: "Sim. Dentro da plataforma Solumn, vá em 'Meu Perfil' e atualize suas informações sempre que precisar — como telefone, e-mail ou chave PIX."
     },
     {
-      pergunta: "O que é a Investmoney e o que ela faz?",
-      resposta: "A Investmoney é uma empresa que ajuda clínicas a receberem à vista o que os pacientes pagam parcelado. Ela antecipa o dinheiro pra clínica e depois recebe os boletos aos poucos. Assim, a clínica tem dinheiro agora e o paciente pode pagar tranquilo."
+      pergunta: "O que é a IM e o que ela faz?",
+      resposta: "A IM é uma empresa que ajuda clínicas a fazerem a gestão de boletos e cobranças sem taxas de adesão ou mensalidade. Ela também ajuda pacientes a fazer seus tratamentos parcelados com facilidade e com clínicas confiáveis."
     },
     {
-      pergunta: "O que significa ser um Freelancer Investmoney?",
+      pergunta: "O que significa ser um Freelancer Solumn?",
       resposta: "É fazer parte da rede que indica clínicas e pacientes pra esse sistema. Você ajuda a conectar quem precisa parcelar com quem oferece o tratamento — e ganha por cada indicação que dá certo."
     },
     {
       pergunta: "Como funciona o sistema de parcelamento no boleto?",
-      resposta: "O paciente escolhe pagar em boletos, a clínica faz o tratamento e recebe tudo antes. Depois, a Investmoney cuida de receber os boletos mês a mês. É simples, sem cartão e sem taxas altas."
+      resposta: "O paciente escolhe pagar parcelado no boleto. Depois, a IM cuida de enviar e cobrar os boletos mês a mês. É simples, sem cartão e sem taxas altas."
     },
     {
       pergunta: "É seguro participar?",
-      resposta: "Sim! A Investmoney é uma empresa real, com contratos e processos 100% digitais e rastreáveis. Todo pagamento e comissão acontece de forma segura e registrada."
+      resposta: "Sim! A IM é uma empresa real, com contratos e processos 100% digitais e rastreáveis. Todo pagamento e comissão acontece de forma segura e registrada."
     },
     {
       pergunta: "Meus dados e indicações ficam protegidos?",
       resposta: "Sim. Seus dados são usados só pra validar e pagar suas indicações. Tudo segue as regras da LGPD, a lei que protege informações pessoais no Brasil."
     },
     {
-      pergunta: "A Investmoney é uma empresa registrada?",
-      resposta: "Sim. A Investmoney Securitizadora S.A. é uma empresa registrada com CNPJ e sede oficial no Brasil, e atua dentro das normas do mercado financeiro."
+      pergunta: "A IM é uma empresa registrada?",
+      resposta: "Sim. A IM é uma empresa registrada com CNPJ e sede oficial no Brasil, e atua dentro das normas do mercado financeiro."
     }
   ];
 
@@ -165,8 +165,8 @@ function App() {
               {isTyping && <span className="animate-blink">|</span>}
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto leading-relaxed text-gray-300 animate-fade-in" style={{animationDelay: '1s', animationFillMode: 'both'}}>
-            Trabalhe de onde quiser, sem horário fixo, e receba bônus por cada fechamento de paciente ou clínica.
+          <p className="text-xl md:text-xl mb-10 max-w-4xl mx-auto leading-relaxed text-gray-300 animate-fade-in" style={{animationDelay: '1s', animationFillMode: 'both'}}>
+            Indique clínicas para fazermos a gestão de boletos e cobranças sem taxas de adesão ou mensalidade. Ou indique pacientes que querem fazer tratamentos parcelados com facilidade.
           </p>
           {/* Seta para baixo - Descubra Mais */}
           <div 
@@ -198,7 +198,7 @@ function App() {
       <SectionWrapper className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-gray-600 text-lg">Plataforma desenvolvida pela <strong className="text-gray-900">Investmoney</strong></p>
+            <p className="text-gray-600 text-lg">Plataforma desenvolvida pela <strong className="text-gray-900">IM</strong></p>
           </div>
           <div className="grid md:grid-cols-3 text-center gap-8">
             <div>
@@ -213,7 +213,7 @@ function App() {
                 <Building2 className="w-10 h-10 text-gray-900" />
               </div>
               <div className="text-4xl font-bold text-gray-900 mb-2">2.500+</div>
-              <div className="text-lg text-gray-600">Clínicas Parceiras da Investmoney</div>
+              <div className="text-lg text-gray-600">Clínicas Parceiras da IM</div>
             </div>
             <div>
               <div className="flex justify-center mb-3">
@@ -247,7 +247,7 @@ function App() {
             <div className="flex items-center justify-center gap-3 bg-white p-4 rounded-lg shadow-sm">
               <FileText className="w-8 h-8 text-gray-900 flex-shrink-0" />
               <div className="text-left">
-                <div className="font-semibold text-gray-900">Produto da Investmoney</div>
+                <div className="font-semibold text-gray-900">Produto da IM</div>
                 <div className="text-sm text-gray-600">Desde 2015 no mercado</div>
               </div>
             </div>
@@ -274,8 +274,7 @@ function App() {
             <div className="grid lg:grid-cols-2 gap-4 items-center">
             {/* Passo a Passo - Esquerda */}
             <div className="space-y-8">
-              <p className="text-lg leading-relaxed text-gray-600">A clínica faz um tratamento e o paciente paga em várias parcelas. A Investmoney, empresa desenvolvedora da Solumn, adianta esse dinheiro pra clínica — e depois recebe os boletos aos poucos. Isso ajuda clínicas a terem dinheiro agora e pacientes a fazerem o tratamento sem precisar de cartão de crédito e sem taxas abusivas.</p>
-              <p className="text-lg leading-relaxed text-gray-600">Você faz parte indicando clínicas que querem receber à vista e pacientes que precisam parcelar com facilidade.</p>
+              <p className="text-lg leading-relaxed text-gray-600">Clínicas estéticas e odontológicas que viram nossas parceiras, contam com nossa gestão de boletos e cobranças sem taxas de adesão ou mensalidade. Pacientes encontram clínicas seguras para fazer seus tratamentos parcelados com facilidade.<br /><br />E você, como freelancer Solumn, apenas faz o primeiro contato com eles: Indica clínicas que querem essa parceria, ou pacientes que querem fazer tratamentos parcelados. A gente cuida do resto.</p>
               <SectionWrapper className="flex items-start space-x-4" delay={0.2}>
                 <div style={{background: 'var(--bg-hero-gradient)'}} className="border-2 border-gray-200 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 transition-colors duration-300">
                   <span className="text-white text-2xl font-bold">1</span>
@@ -398,10 +397,10 @@ function App() {
             <div className="p-6">
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">Sobre o Solumn</h3>
               <p className="text-base leading-relaxed text-gray-600 mb-4">
-                Solumn é uma plataforma desenvolvida pela <strong>Investmoney</strong>, empresa brasileira líder em securitização de crédito desde 2015, especializada em conectar pacientes a clínicas odontológicas e de estética de qualidade.
+                Solumn é uma plataforma desenvolvida pela <strong>IM</strong>, empresa brasileira líder em securitização de crédito desde 2015, especializada em conectar pacientes a clínicas odontológicas e de estética de qualidade.
               </p>
               <p className="text-base leading-relaxed text-gray-600">
-                A Investmoney possui mais de 2.500 clínicas parceiras em todo Brasil. Através do Solumn, facilitamos o acesso a tratamentos por meio de uma rede de freelancers capacitados que conectam pacientes às clínicas ideais.
+                A IM possui mais de 2.500 clínicas parceiras em todo Brasil. Através do Solumn, facilitamos o acesso a tratamentos por meio de uma rede de freelancers capacitados que conectam pacientes às clínicas ideais.
               </p>
             </div>
 
@@ -675,11 +674,11 @@ function App() {
             <div>
               <h4 className="text-white font-semibold text-lg mb-4">Sobre o Solumn</h4>
               <p className="text-sm leading-relaxed mb-4">
-                Plataforma da Investmoney SA que conecta pacientes a clínicas odontológicas através de uma rede de consultores qualificados.
+                Plataforma da IM que conecta pacientes a clínicas odontológicas através de uma rede de consultores qualificados.
               </p>
               <img 
                 src="/logo.png" 
-                alt="Solumn - Investmoney SA" 
+                alt="Solumn" 
                 className="h-12 w-auto opacity-80"
               />
             </div>
@@ -695,7 +694,7 @@ function App() {
                 </li>
                 <li>
                   <a href="https://investmoneysa.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                    Site da Investmoney
+                    Site da IM
                   </a>
                 </li>
                 <li>
@@ -748,8 +747,8 @@ function App() {
                 </li>
                 <li className="text-xs pt-2">
                   <strong className="text-white block mb-1">Email:</strong>
-                  <a href="mailto:contato@investmoneysa.com.br" className="hover:text-white transition-colors">
-                    contato@investmoneysa.com.br
+                  <a href="mailto:contato@IMsa.com.br" className="hover:text-white transition-colors">
+                    contato@IMsa.com.br
                   </a>
                 </li>
                 <li className="text-xs pt-2">
@@ -765,7 +764,7 @@ function App() {
           <div className="border-t border-gray-800 pt-8 mt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
               <p className="text-gray-400">
-                © 2025 Investmoney SA. Todos os direitos reservados.
+                © 2025 Grupo IM. Todos os direitos reservados.
               </p>
               <div className="flex flex-col md:flex-row gap-4 text-xs text-gray-400">
                 <span className="flex items-center gap-2">
@@ -776,9 +775,9 @@ function App() {
                   <Lock className="w-4 h-4" />
                   Dados Protegidos
                 </span>
-                <a href="https://investmoneysa.com.br" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+                <a href="https://IMsa.com.br" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
                   <Building2 className="w-4 h-4" />
-                  investmoneysa.com.br
+                  IMsa.com.br
                 </a>
                 <div className="flex justify-center mt-6">
                   <img 
