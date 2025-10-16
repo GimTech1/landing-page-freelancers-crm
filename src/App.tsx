@@ -151,7 +151,7 @@ function App() {
             onClick={() => window.open('https://solumn.com.br/login', '_blank')}
             className="px-6 py-2 rounded-lg font-semibold text-base transition-all duration-300 bg-white text-gray-900 hover:bg-gray-100 shadow-md hover:shadow-lg cursor-pointer"
           >
-            Acessar
+            Já possuo uma conta
           </button>
         </div>
       </header>
